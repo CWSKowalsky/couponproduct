@@ -1,0 +1,35 @@
+{
+  "name":"computerworks/testbundlet",
+  "description":"A Test Bundle to test Contao 4 Bundle functionality",
+  "keywords":["test", "bundle", "cw", "computerworks"],
+  "type":"contao-bundle",
+  "license":"LGPL-3.0-or-later",
+  "authors":[
+    {
+      "name":"Samuel Kowalsky",
+      "homepage":"http://bytecap.net",
+      "role":"Developer"
+    }
+  ],
+  "require":{
+    "php":">=5.5.0",
+    "contao/core-bundle": "~4.3"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.0"
+  },
+  "conflict": {
+    "contao/manager-plugin": "<2.0 || >=3.0"
+  },
+  "replace": {
+    "contao-legacy/newsletter_export": "self.version"
+  },
+  "autoload": {
+    "psr-4": {
+      "ComputerWorks\\TestBundle\\": "src/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "ComputerWorks\\TestBundle\\ContaoManager\\Plugin"
+  }
+}
