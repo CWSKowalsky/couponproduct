@@ -1,5 +1,5 @@
 {
-  "name":"computerworks/testbundlet",
+  "name":"computerworks/testbundle",
   "description":"A Test Bundle to test Contao 4 Bundle functionality",
   "keywords":["test", "bundle", "cw", "computerworks"],
   "type":"contao-bundle",
