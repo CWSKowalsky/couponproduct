@@ -1,6 +1,6 @@
 <?php
 
-namespace ComputerWorks\TestBundle\ContaoManager;
+namespace ComputerWorks\CouponProducts\ContaoManager;
 
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
@@ -12,8 +12,8 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            (new BundleConfig('ComputerWorks\TestBundle\ComputerWorksTestBundle'))
-                ->setReplace(['cw-testbundle'])
+            (new BundleConfig('ComputerWorks\CouponProducts\ComputerWorksCouponProducts'))
+                ->setReplace(['cw-couponproducts'])
                 ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
         ];
     }

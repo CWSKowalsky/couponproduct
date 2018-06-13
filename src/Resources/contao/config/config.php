@@ -2,7 +2,7 @@
 
 use Contao\CoreBundle\ContaoCoreBundle;
 
-$GLOBALS['BE_MOD']['content']['newsletter']['export'] = array('TestBundle\Test', 'exportRecipients');
+$GLOBALS['BE_MOD']['content']['newsletter']['export'] = array('CouponProducts\CWCP', 'exportRecipients');
 
 array_insert($GLOBALS['BE_MOD'], 0, array(
 	'computerworkstestbundle' => array(

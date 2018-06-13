@@ -1,10 +1,10 @@
 <?php
 
-namespace ComputerWorks\TestBundle;
+namespace ComputerWorks\CouponProducts;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class Test extends \Backend
+class CWCP extends \Backend
 {
 
   public function exportRecipients(\DataContainer $dc) {

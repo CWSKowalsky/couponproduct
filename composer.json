@@ -1,9 +1,8 @@
 {
-  "name":"computerworks/testbundle",
-  "description":"A Test Bundle to test Contao 4 Bundle functionality",
-  "keywords":["test", "bundle", "cw", "computerworks"],
+  "name":"computerworks/couponproducts",
+  "description":"Extends merconis coupon functionality",
+  "keywords":["merconis", "coupon", "cw", "computerworks", "product", "productlist", "limit to product"],
   "type":"contao-bundle",
-  "version": "0.0.1",
   "license":"LGPL-3.0-or-later",
   "authors":[
     {
@@ -21,10 +20,10 @@
   },
   "autoload": {
     "psr-4": {
-      "ComputerWorks\\TestBundle\\": "src"
+      "ComputerWorks\\CouponProducts\\": "src"
     }
   },
   "extra": {
-    "contao-manager-plugin": "ComputerWorks\\TestBundle\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "ComputerWorks\\CouponProducts\\ContaoManager\\Plugin"
   }
 }
