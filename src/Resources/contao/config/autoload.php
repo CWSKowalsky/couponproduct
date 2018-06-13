@@ -25,5 +25,5 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
     // Classes
-    'ComputerWorks\TestBundle\Test' => 'vendor/computerworks/testbundle/src/Resources/contao/classes/Test.php',
+    'Merconis\Core\ls_shop_cartX' => 'vendor/computerworks/couponproducts/src/Resources/contao/classes/ls_shop_cartX.php',
 ));
