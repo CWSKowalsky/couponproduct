@@ -14,7 +14,7 @@ class Plugin implements BundlePluginInterface
         return [
             (new BundleConfig('ComputerWorks\CouponProducts\ComputerWorksCouponProducts'))
                 ->setReplace(['cw-couponproducts'])
-                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
+                ->setLoadAfter(['LeadingSystems\MerconisBundle\LeadingSystemsMerconisBundle'])
         ];
     }
     
