@@ -3,9 +3,8 @@
   "description":"A Test Bundle to test Contao 4 Bundle functionality",
   "keywords":["test", "bundle", "cw", "computerworks"],
   "type":"contao-bundle",
+  "version": "0.0.1",
   "license":"LGPL-3.0-or-later",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "authors":[
     {
       "name":"Samuel Kowalsky",
