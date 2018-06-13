@@ -1,40 +1,12 @@
 <?php
 
-/**
- * Newsletter export
- * CSV export button for newsletter recipients.
- *
- * @author    John Brand, http://www.brandbrilliance.co.za
- * @author    Lionel Maccaud
- * @copyright Lionel Maccaud
- * @package   newsletterExport
- * @license   LGPL-3.0-or-later
- */
-
-/**
- * Run in a custom namespace, so the class can be replaced
- */
-namespace LionelM\NewsletterExportBundle;
+namespace ComputerWorks\TestBundle;
 
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Class NewsletterExport
- *
- * Provide methods to handle subscriber export.
- * @author  John Brand
- * @author  Lionel Maccaud
- * @author  fritzmg
- * @package Controller
- */
-class NewsletterExport extends \Backend
+class Test extends \Backend
 {
-  /**
-     * Return a form to choose a CSV file and import it
-     * Resource: http://www.andrew-kirkpatrick.com/2013/08/output-csv-straight-to-browser-using-php/
-     * @param object
-     * @return string
-     */
+
   public function exportRecipients(\DataContainer $dc)
   {
     if ($this->Input->get('key') != 'export') {

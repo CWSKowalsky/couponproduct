@@ -16,7 +16,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-    'LionelM',
+    'ComputerWorks',
 ));
 
 /**
@@ -25,5 +25,5 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
     // Classes
-    'LionelM\NewsletterExportBundle\NewsletterExport' => 'vendor/lionel/newsletter-export/src/Resources/contao/classes/NewsletterExport.php',
+    'ComputerWorks\TestBundle\Test' => 'vendor/computerworks/testbundle/src/Resources/contao/classes/Test.php',
 ));
