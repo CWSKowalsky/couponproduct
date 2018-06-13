@@ -13,10 +13,8 @@
   ],
   "require":{
     "php":">=7.0",
-    "contao/core-bundle": ">=4.0"
-  },
-  "replace": {
-    "contao-legacy/newsletter_export": "self.version"
+    "contao/core-bundle": "~4.4",
+    "leadingsystems/contao-merconis": "~4.0"
   },
   "autoload": {
     "psr-4": {
