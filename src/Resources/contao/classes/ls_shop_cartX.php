@@ -34,7 +34,6 @@ class ls_shop_cartX {
 		 *
 		 * So, for now we leave it as it is, but it should definitely be improved.
 		 */
-		$this->getData('tl_ls_shop_product');
 		$this->getCartFromSession();
 	}
 
@@ -556,12 +555,13 @@ class ls_shop_cartX {
     }
     
     protected function productsAreGiven($couponID) {
-        $coupon = $this->getCouponByID($couponID);
+		$coupon = $this->getCouponByID($couponID);
+		print_r($coupon);
         if(!isset($coupon)) {
             return false;
         } else {
             $pr = unserialize($coupon['products']);
-            if(sizeof($pr) > 0 and $this->hasValues($pr)) {
+            if(sizeof($pr) > 0 && $this->hasValues($pr)) {
                 return true;
             } else {
                 return false;
@@ -571,6 +571,7 @@ class ls_shop_cartX {
     
     protected function getProdutsOfCoupon($couponID) {
         if($this->productsAreGiven($couponID)) {
+			echo '<br>products are given';
             $coupon = $this->getCouponByID($couponID);
             $array = $coupon['products'];
             $array = unserialize($array);
@@ -583,6 +584,7 @@ class ls_shop_cartX {
             }
             return $new_array;
         } else {
+			echo '<br>products are not given';
             $array = array();
             $tl_products = $this->getData('tl_ls_shop_product');
             foreach($tl_products as $product) {
@@ -602,10 +604,14 @@ class ls_shop_cartX {
 			print_r($pr);
             foreach($pr as $productid) {
                 if($productid == $pi) {
+					echo '<br>item is reduced';
                     return true;
                 }
             }
 		}
+		echo '<br>item is not reduced';
+		echo '<br>product id '.$pi;
+		die();
 		return true;
 	}
 
