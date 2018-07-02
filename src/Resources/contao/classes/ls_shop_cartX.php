@@ -599,7 +599,6 @@ class ls_shop_cartX {
         $value = 0;
         foreach ($this->couponsUsed as $couponID => $arrCouponInfo) {
 			$pr = $this->getProdutsOfCoupon($couponID);
-			print_r($pr);
             foreach($pr as $productid) {
                 if($productid == $pi) {
                     return true;
