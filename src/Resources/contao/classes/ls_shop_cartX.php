@@ -472,7 +472,8 @@ class ls_shop_cartX {
 				$invoicedAmount = ls_add($invoicedAmount, $value);
 			}
 		}
-		return $invoicedAmount;
+		//return $invoicedAmount;
+		return 10000;
 	}
 	
 	/**
