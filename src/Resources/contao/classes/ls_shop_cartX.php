@@ -472,7 +472,6 @@ class ls_shop_cartX {
 				$invoicedAmount = ls_add($invoicedAmount, $value);
 			}
 		}
-		die();
 		return $invoicedAmount;
 	}
 	
@@ -500,7 +499,7 @@ class ls_shop_cartX {
 			$arrItems[$productCartKey] = array(
 				'productVariantID' => ls_shop_generalHelper::getProductVariantIDFromCartKey($productCartKey),
 				'productCartKey' => $productCartKey,
-				'price' => $itemExtended['price'],
+				'price' => 10000,	//	'price' => $itemExtended['price'],
 				'weight' => $itemExtended['weight'],
 				'quantity' => $itemExtended['quantity'],
 				'priceCumulative' => $tmpPriceCumulative,
