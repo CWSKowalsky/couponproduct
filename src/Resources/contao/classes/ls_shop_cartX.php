@@ -169,6 +169,9 @@ class ls_shop_cartX {
 				// ...
 				 */
 			),
+			'totalValueOfRGoods' => array(
+
+			),
 			'totalWeightOfGoods' => null, // this variable contains the cumulative weight of all goods in the cart
 			'couponValues' => array(
 				/* 
@@ -595,7 +598,8 @@ class ls_shop_cartX {
         $this->getCouponsUsed();
         $value = 0;
         foreach ($this->couponsUsed as $couponID => $arrCouponInfo) {
-            $pr = $this->getProdutsOfCoupon($couponID);
+			$pr = $this->getProdutsOfCoupon($couponID);
+			print_r($pr);
             foreach($pr as $productid) {
                 if($productid == $pi) {
                     return true;
