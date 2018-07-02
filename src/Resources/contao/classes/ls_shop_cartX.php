@@ -252,15 +252,15 @@ class ls_shop_cartX {
 		// ###### ACHTUNG: REIHENFOLGE WICHTIG! ####################
 		$this->calculation['items'] = $this->getCalculatedItems();
 
-		//### MOD S ####
-		$this->calculation['ritems'] = $this->getCalculatedReducedItems();
-		//### MOD E ####
+		//### MOD S ###
+		//$this->calculation['ritems'] = $this->getCalculatedReducedItems();
+		//### MOD E ###
 
 		$this->calculation['totalValueOfGoods'] = $this->getTotalValueOfGoods($this->calculation['items']);
 
-		//### MOD S ####
-		$this->calculation['totalValueOfRGoods'] = $this->getTotalValueOfGoods($this->calculation['ritems']);
-		//### MOD E ####
+		//### MOD S ###
+		//$this->calculation['totalValueOfRGoods'] = $this->getTotalValueOfGoods($this->calculation['ritems']);
+		//### MOD E ###
 
 		$this->calculation['totalWeightOfGoods'] = $this->getTotalWeightOfGoods($this->calculation['items']);
 		$this->calculation['couponValues'] = $this->getCouponValues($this->calculation['totalValueOfGoods']);
@@ -522,15 +522,13 @@ class ls_shop_cartX {
 		return $arrItems;
 	}
 
+	//### MOD S ###
 	protected function getData($table) {
-		$response = \Database::getInstance()->prepare("
-			SELECT		`*`
-			FROM		`".$table."`
-		")
-		->execute();
+		$response = \Database::getInstance()->prepare("SELECT * FROM '".$table."'")->execute();
 		$array = $response->fetchAllAssoc();
 		print_r($array);
 		die();
 	}
+	//### MOD E ###
 
 }
