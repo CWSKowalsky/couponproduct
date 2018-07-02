@@ -1,6 +1,6 @@
 <?php
 
-namespace SKowalsky\CouponProducts\ContaoManager;
+namespace SK\CouponProducts\ContaoManager;
 
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
@@ -12,7 +12,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            (new BundleConfig('SKowalsky\CouponProducts\SKowalskyCouponProducts'))
+            (new BundleConfig('SK\CouponProducts\SKCouponProducts'))
                 ->setReplace(['sk-couponproducts'])
                 ->setLoadAfter(['LeadingSystems\MerconisBundle\LeadingSystemsMerconisBundle'])
         ];

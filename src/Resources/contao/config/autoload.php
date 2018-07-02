@@ -2,5 +2,5 @@
 
 ClassLoader::addNamespaces(array
 (
-    'SKowalsky',
+    'SK',
 ));
