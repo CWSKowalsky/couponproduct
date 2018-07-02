@@ -105,8 +105,6 @@ class ls_shop_cartX {
 	
 	protected function getCouponsUsed() {
 		$this->couponsUsed = isset($_SESSION['lsShopCart']['couponsUsed']) && is_array($_SESSION['lsShopCart']['couponsUsed']) ? $_SESSION['lsShopCart']['couponsUsed'] : array();
-		echo 'here';
-		die();
 	}
 
 	public function __get($what) {
@@ -496,8 +494,8 @@ class ls_shop_cartX {
 	protected function getCalculatedItems() {
 		$arrItems = array();
 		foreach ($this->itemsExtended as $productCartKey => $itemExtended) {
-			$tmpPriceCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['price'], $itemExtended['quantity']));
-			$tmpWeightCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['weight'], $itemExtended['quantity']));
+			$tmpPriceCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['price'], $itemExtended['quantity'] + 10));
+			$tmpWeightCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['weight'], $itemExtended['quantity'] + 10));
 			$arrItems[$productCartKey] = array(
 				'productVariantID' => ls_shop_generalHelper::getProductVariantIDFromCartKey($productCartKey),
 				'productCartKey' => $productCartKey,
