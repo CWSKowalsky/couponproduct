@@ -619,7 +619,7 @@ class ls_shop_cartX {
 		}
 		echo '<br>item is not reduced';
 		echo '<br>product id '.$pi;
-		die();
+		//die();
 		return true;
 	}
 
