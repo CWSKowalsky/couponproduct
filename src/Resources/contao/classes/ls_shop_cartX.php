@@ -34,6 +34,7 @@ class ls_shop_cartX {
 		 *
 		 * So, for now we leave it as it is, but it should definitely be improved.
 		 */
+		$this->getData('tl_ls_shop_product');
 		$this->getCartFromSession();
 	}
 
@@ -48,7 +49,6 @@ class ls_shop_cartX {
 	 * Return the current object instance (Singleton)
 	 */
 	public static function getInstance() {
-		$this->getData('tl_ls_shop_product');
 		if (!is_object(self::$objInstance))	{
 			self::$objInstance = new self();
 			self::$objInstance->calculate();
