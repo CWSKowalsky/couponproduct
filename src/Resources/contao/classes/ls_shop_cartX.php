@@ -430,8 +430,9 @@ class ls_shop_cartX {
                     return true;
                 }
             }
-        }
-        return false;
+		}
+		return true;	//MARK
+        //return false;
 	}
 	//MARK : Ende
 	
