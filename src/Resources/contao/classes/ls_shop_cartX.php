@@ -596,8 +596,16 @@ class ls_shop_cartX {
     }
     
     protected function isReduced($pi) {
+
+		echo '<br>before:';
+		print_r($this->couponsUsed);
+
         ls_shop_cartHelper::revalidateCouponsUsed();
-        $this->getCouponsUsed();
+		$this->getCouponsUsed();
+		
+		echo '<br>after:';
+		print_r($this->couponsUsed);
+
         $value = 0;
         foreach ($this->couponsUsed as $couponID => $arrCouponInfo) {
 			$pr = $this->getProdutsOfCoupon($couponID);
