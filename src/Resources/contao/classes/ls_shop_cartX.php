@@ -48,6 +48,7 @@ class ls_shop_cartX {
 	 * Return the current object instance (Singleton)
 	 */
 	public static function getInstance() {
+		echo '<h1>Test</h1>';die();
 		if (!is_object(self::$objInstance))	{
 			self::$objInstance = new self();
 			self::$objInstance->calculate();
@@ -499,7 +500,7 @@ class ls_shop_cartX {
 			$arrItems[$productCartKey] = array(
 				'productVariantID' => ls_shop_generalHelper::getProductVariantIDFromCartKey($productCartKey),
 				'productCartKey' => $productCartKey,
-				'price' => 10000,	//	'price' => $itemExtended['price'],
+				'price' => $itemExtended['price'],
 				'weight' => $itemExtended['weight'],
 				'quantity' => $itemExtended['quantity'],
 				'priceCumulative' => $tmpPriceCumulative,
