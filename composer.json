@@ -19,7 +19,10 @@
   "autoload": {
     "psr-4": {
       "ComputerWorks\\CouponProducts\\": "src"
-    }
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ]
   },
   "extra": {
     "contao-manager-plugin": "ComputerWorks\\CouponProducts\\ContaoManager\\Plugin"
