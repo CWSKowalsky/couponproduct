@@ -22,8 +22,8 @@ ClassLoader::addNamespaces(array
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
-(
-    // Classes
-    'Merconis\Core\ls_shop_cartX' => 'vendor/computerworks/couponproducts/src/Resources/contao/classes/ls_shop_cartX.php',
-));
+// ClassLoader::addClasses(array
+// (
+//     // Classes
+//     'Merconis\Core\ls_shop_cartX' => 'vendor/computerworks/couponproducts/src/Resources/contao/classes/ls_shop_cartX.php',
+// ));
