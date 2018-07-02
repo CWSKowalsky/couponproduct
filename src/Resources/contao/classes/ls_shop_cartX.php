@@ -263,7 +263,11 @@ class ls_shop_cartX {
 		//### MOD E ###
 
 		$this->calculation['totalWeightOfGoods'] = $this->getTotalWeightOfGoods($this->calculation['items']);
-		$this->calculation['couponValues'] = $this->getCouponValues($this->calculation['totalValueOfGoods']);
+
+		//### MOD S ###
+		$this->calculation['couponValues'] = $this->getCouponValues($this->calculation['totalValueOfRGoods']);
+		//### MOD E ###
+		
 		$this->calculation['shippingFee'] = $this->getShippingFee();
 		$this->calculation['paymentFee'] = $this->getPaymentFee();
 		$this->calculation['total'] = $this->getTotal();
