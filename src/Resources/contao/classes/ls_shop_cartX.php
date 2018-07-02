@@ -72,8 +72,6 @@ class ls_shop_cartX {
 	 * information at any time
 	 */
 	public function getCartFromSession() {
-		echo 'HERE';
-		die();
 		$this->items = $_SESSION['lsShopCart']['items'];
 		
 		if (isset($this->items) && is_array($this->items)) {
