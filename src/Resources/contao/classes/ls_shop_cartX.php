@@ -253,13 +253,13 @@ class ls_shop_cartX {
 		$this->calculation['items'] = $this->getCalculatedItems();
 
 		//### MOD S ###
-		//$this->calculation['ritems'] = $this->getCalculatedReducedItems();
+		$this->calculation['ritems'] = $this->getCalculatedReducedItems();
 		//### MOD E ###
 
 		$this->calculation['totalValueOfGoods'] = $this->getTotalValueOfGoods($this->calculation['items']);
 
 		//### MOD S ###
-		//$this->calculation['totalValueOfRGoods'] = $this->getTotalValueOfGoods($this->calculation['ritems']);
+		$this->calculation['totalValueOfRGoods'] = $this->getTotalValueOfGoods($this->calculation['ritems']);
 		//### MOD E ###
 
 		$this->calculation['totalWeightOfGoods'] = $this->getTotalWeightOfGoods($this->calculation['items']);
@@ -526,8 +526,102 @@ class ls_shop_cartX {
 	protected function getData($table) {
 		$response = \Database::getInstance()->prepare("SELECT * FROM ".$table)->execute();
 		$array = $response->fetchAllAssoc();
-		print_r($array);
-		die();
+		return $array;
+	}
+	
+    protected function getCouponByID($couponID) {
+        $tl_coupon = $this->getData('tl_ls_shop_coupon');
+        foreach($tl_coupon as $coupon_arr) {
+            if($coupon_arr['id'] == $couponID) {
+                return $coupon_arr;
+            }
+        }
+        return array();
+    }
+
+    protected function hasValues($arr) {
+        foreach($arr as $v) {
+            if($v != '') {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    protected function productsAreGiven($couponID) {
+        $coupon = $this->getCouponByID($couponID);
+        if(!isset($coupon)) {
+            return false;
+        } else {
+            $pr = unserialize($coupon['products']);
+            if(sizeof($pr) > 0 and $this->hasValues($pr)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    protected function getProdutsOfCoupon($couponID) {
+        if($this->productsAreGiven($couponID)) {
+            $coupon = $this->getCouponByID($couponID);
+            $array = $coupon['products'];
+            $array = unserialize($array);
+            $new_array = array();
+            $tl_products = $this->getData('tl_ls_shop_product');
+            foreach($tl_products as $product) {
+                if(in_array($product['id'], $array)) {
+                    array_push($new_array, $product['lsShopProductCode']);
+                }
+            }
+            return $new_array;
+        } else {
+            $array = array();
+            $tl_products = $this->getData('tl_ls_shop_product');
+            foreach($tl_products as $product) {
+                $code = $product['lsShopProductCode'];
+                array_push($array, $code);
+            }
+            return $array;
+        }
+    }
+    
+    protected function isReduced($pi) {
+        $this->ls_shop_cartController->revalidateCouponsUsed();
+        $this->getCouponsUsed();
+        $value = 0;
+        foreach ($this->couponsUsed as $couponID => $arrCouponInfo) {
+            $pr = $this->getProdutsOfCoupon($couponID);
+            foreach($pr as $productid) {
+                if($productid == $pi) {
+                    return true;
+                }
+            }
+		}
+		return true;
+	}
+
+	protected function getCalculatedReducedItems() {
+        $arrItems = array();
+        foreach ($this->itemsExtended as $productCartKey => $itemExtended) {
+            $tmpPriceCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['price'], $itemExtended['quantity']));
+			$tmpWeightCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['weight'], $itemExtended['quantity']));
+            $product_id = $itemExtended['objProduct']->ls_data['de']['lsShopProductCode'];
+            if($this->isReduced($product_id)) {
+                $arrItems[$productCartKey] = array(
+					'productVariantID' => ls_shop_generalHelper::getProductVariantIDFromCartKey($productCartKey),
+					'productCartKey' => $productCartKey,
+					'price' => $itemExtended['price'],
+					'weight' => $itemExtended['weight'],
+					'quantity' => $itemExtended['quantity'],
+					'priceCumulative' => $tmpPriceCumulative,
+					'weightCumulative' => $tmpWeightCumulative,
+					'taxClass' => $itemExtended['objProduct']->_steuersatz,
+					'taxPercentage' => ls_shop_generalHelper::getCurrentTax($itemExtended['objProduct']->_steuersatz)
+				);
+            }
+        }
+        return $arrItems;
 	}
 	//### MOD E ###
 
