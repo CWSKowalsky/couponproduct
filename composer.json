@@ -1,7 +1,7 @@
 {
-  "name":"computerworks/couponproducts",
-  "description":"Extends merconis coupon functionality",
-  "keywords":["merconis", "coupon", "cw", "computerworks", "product", "productlist", "limit to product"],
+  "name":"skowalsky/couponproducts",
+  "description": "Extends MERCONIS coupon functionality. The validity of a coupon can now be reduced to specific products.",
+  "keywords":["merconis", "coupon", "skowalsky", "product", "list", "limit", "limit to product"],
   "type":"contao-bundle",
   "license":"LGPL-3.0-or-later",
   "authors":[
@@ -18,13 +18,13 @@
   },
   "autoload": {
     "psr-4": {
-      "ComputerWorks\\CouponProducts\\": "src"
+      "SKowalsky\\CouponProducts\\": "src"
     },
     "classmap": [
       "src/Resources/contao/"
     ]
   },
   "extra": {
-    "contao-manager-plugin": "ComputerWorks\\CouponProducts\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "SKowalsky\\CouponProducts\\ContaoManager\\Plugin"
   }
 }

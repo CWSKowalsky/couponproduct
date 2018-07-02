@@ -168,9 +168,11 @@ class ls_shop_cartX {
 				// ...
 				 */
 			),
+			//### MOD S ###
 			'totalValueOfRGoods' => array(
 
 			),
+			//### MOD E ###
 			'totalWeightOfGoods' => null, // this variable contains the cumulative weight of all goods in the cart
 			'couponValues' => array(
 				/* 
