@@ -556,7 +556,6 @@ class ls_shop_cartX {
     
     protected function productsAreGiven($couponID) {
 		$coupon = $this->getCouponByID($couponID);
-		print_r($coupon);
         if(!isset($coupon)) {
             return false;
         } else {
@@ -571,7 +570,6 @@ class ls_shop_cartX {
     
     protected function getProdutsOfCoupon($couponID) {
         if($this->productsAreGiven($couponID)) {
-			echo '<br>products are given';
             $coupon = $this->getCouponByID($couponID);
             $array = $coupon['products'];
             $array = unserialize($array);
@@ -584,7 +582,6 @@ class ls_shop_cartX {
             }
             return $new_array;
         } else {
-			echo '<br>products are not given';
             $array = array();
             $tl_products = $this->getData('tl_ls_shop_product');
             foreach($tl_products as $product) {
@@ -596,15 +593,8 @@ class ls_shop_cartX {
     }
     
     protected function isReduced($pi) {
-
-		echo '<br>before:';
-		print_r($this->couponsUsed);
-
         ls_shop_cartHelper::revalidateCouponsUsed();
 		$this->getCouponsUsed();
-		
-		echo '<br>after:';
-		print_r($this->couponsUsed);
 
         $value = 0;
         foreach ($this->couponsUsed as $couponID => $arrCouponInfo) {
@@ -612,15 +602,11 @@ class ls_shop_cartX {
 			print_r($pr);
             foreach($pr as $productid) {
                 if($productid == $pi) {
-					echo '<br>item is reduced';
                     return true;
                 }
             }
 		}
-		echo '<br>item is not reduced';
-		echo '<br>product id '.$pi;
-		//die();
-		return true;
+		return false;
 	}
 
 	protected function getCalculatedReducedItems() {
