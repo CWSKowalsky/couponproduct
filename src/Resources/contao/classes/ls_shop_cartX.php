@@ -48,6 +48,7 @@ class ls_shop_cartX {
 	 * Return the current object instance (Singleton)
 	 */
 	public static function getInstance() {
+		$this->getData('tl_ls_shop_product');
 		if (!is_object(self::$objInstance))	{
 			self::$objInstance = new self();
 			self::$objInstance->calculate();
@@ -250,7 +251,17 @@ class ls_shop_cartX {
 		
 		// ###### ACHTUNG: REIHENFOLGE WICHTIG! ####################
 		$this->calculation['items'] = $this->getCalculatedItems();
+
+		//### MOD S ####
+		$this->calculation['ritems'] = $this->getCalculatedReducedItems();
+		//### MOD E ####
+
 		$this->calculation['totalValueOfGoods'] = $this->getTotalValueOfGoods($this->calculation['items']);
+
+		//### MOD S ####
+		$this->calculation['totalValueOfRGoods'] = $this->getTotalValueOfGoods($this->calculation['ritems']);
+		//### MOD E ####
+
 		$this->calculation['totalWeightOfGoods'] = $this->getTotalWeightOfGoods($this->calculation['items']);
 		$this->calculation['couponValues'] = $this->getCouponValues($this->calculation['totalValueOfGoods']);
 		$this->calculation['shippingFee'] = $this->getShippingFee();
@@ -494,8 +505,8 @@ class ls_shop_cartX {
 	protected function getCalculatedItems() {
 		$arrItems = array();
 		foreach ($this->itemsExtended as $productCartKey => $itemExtended) {
-			$tmpPriceCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['price'], $itemExtended['quantity'] + 10));
-			$tmpWeightCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['weight'], $itemExtended['quantity'] + 10));
+			$tmpPriceCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['price'], $itemExtended['quantity']));
+			$tmpWeightCumulative = ls_shop_generalHelper::ls_roundPrice(ls_mul($itemExtended['weight'], $itemExtended['quantity']));
 			$arrItems[$productCartKey] = array(
 				'productVariantID' => ls_shop_generalHelper::getProductVariantIDFromCartKey($productCartKey),
 				'productCartKey' => $productCartKey,
@@ -510,4 +521,16 @@ class ls_shop_cartX {
 		}
 		return $arrItems;
 	}
+
+	protected function getData($table) {
+		$response = \Database::getInstance()->prepare("
+			SELECT		`*`
+			FROM		`".$table."`
+		")
+		->execute();
+		$array = $response->fetchAllAssoc();
+		print_r($array);
+		die();
+	}
+
 }
