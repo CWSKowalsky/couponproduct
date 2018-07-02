@@ -524,7 +524,7 @@ class ls_shop_cartX {
 
 	//### MOD S ###
 	protected function getData($table) {
-		$response = \Database::getInstance()->prepare("SELECT * FROM '".$table."'")->execute();
+		$response = \Database::getInstance()->prepare("SELECT * FROM ".$table)->execute();
 		$array = $response->fetchAllAssoc();
 		print_r($array);
 		die();
