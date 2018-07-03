@@ -13,7 +13,7 @@
 		'inputType'		=>	'text',
 		'eval'			=>	array('rgxp' => 'number', 'tl_class' => 'w50', 'mandatory' => true),
         'sorting' => true,
-        'sql' => 'varchar(8) NULL'
+        'sql' => "varchar(8) NOT NULL default='0'"
     );
 
 ?>
