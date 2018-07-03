@@ -9,7 +9,8 @@
     $GLOBALS['TL_DCA']['tl_ls_shop_product']['palettes']['default'] = str_replace
     (
         'lsShopProductDetailsTemplate',
-        'lsShopProductDetailsTemplate;{productcouponext},minimumOrderAmount'
+        'lsShopProductDetailsTemplate;{productcouponext},minimumOrderAmount',
+        $GLOBALS['TL_DCA']['tl_ls_shop_product']['palettes']['default']
     );
 
     $GLOBALS['TL_DCA']['tl_ls_shop_coupon']['fields']['products'] = array
