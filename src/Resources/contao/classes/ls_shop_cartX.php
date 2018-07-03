@@ -660,16 +660,24 @@ class ls_shop_cartX {
     }
 
 	protected function getMinOrderValue($product) {
-		print_r($product).'<br>';
-		$pav = unserialize(get_object_vars($product));
-		print_r($pav).'<br><br>';
-		$mov = $pav['ls_data']['de']['minimumOrderAmount'];
-		if($mov != '') {
-			echo $mov;
-			return $mov;
+		var_dump($product);
+		echo '<br>';
+		$pav = unserialize(get_object_vars($product)['ls_data']['de']);
+		echo '<br><br><br><br>';
+		var_dump($pav);
+        for($i = 0; $i < sizeof($pav); $i++) {
+			$propval = $pav[$i];
+			echo '<br><br><br>';
+			var_dump($propval);
+            $property = $this->getPropertyByID($propval[0]);
+            $value = $this->getValueByID($propval[1]);
+            if($property == 'minimumOrderAmount') {
+				echo 'value '.$value;die();
+                return $value;
+            }
 		}
-		echo '-0-';
-		return 0;
+		echo 'noval found';die();
+        return 0;
     }
 	//### MOD E ###
 
