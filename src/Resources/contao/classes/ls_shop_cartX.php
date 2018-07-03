@@ -641,6 +641,24 @@ class ls_shop_cartX {
         return $arrItems;
 	}
 
+	protected function getPropertyByID($id) {
+        $array = $this->getData('tl_ls_shop_attributes');
+        foreach($array as $aarray) {
+            if($id == $aarray['id']) {
+                return $aarray['alias'];
+            }
+        }
+    }
+
+    protected function getValueByID($id) {
+        $array = $this->getData('tl_ls_shop_attribute_values');
+        foreach($array as $varray) {
+            if($id == $varray['id']) {
+                return $varray['alias'];
+            }
+        }
+    }
+
 	protected function getMinOrderValue($product) {
         $pav = unserialize(get_object_vars($product)['ls_data']['de']['lsShopProductAttributesValues']);
         for($i = 0; $i < sizeof($pav); $i++) {
