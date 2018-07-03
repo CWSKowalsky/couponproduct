@@ -661,8 +661,9 @@ class ls_shop_cartX {
 
 	protected function getMinOrderValue($product) {
 		print_r($product).'<br>';
-		$pav = unserialize(get_object_vars($product)['ls_data']['de']);
-		$mov = $pav['minimumOrderAmount'];
+		$pav = unserialize(get_object_vars($product));
+		print_r($pav).'<br><br>';
+		$mov = $pav['ls_data']['de']['minimumOrderAmount'];
 		if($mov != '') {
 			echo $mov;
 			return $mov;
