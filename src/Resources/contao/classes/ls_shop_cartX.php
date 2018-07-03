@@ -81,6 +81,14 @@ class ls_shop_cartX {
 				 * because otherwise detecting payment and shipping methods' price limits won't work.
 				 */
 				$objProduct = ls_shop_generalHelper::getObjProduct($productCartKey, __METHOD__, true);
+				
+				//### MOD S ###
+				$minov = $this->getMinOrderValue($objProduct);
+                if($arrCartItem['quantity'] < $minov) {
+                    $arrCartItem['quantity'] = $minov;
+                }
+				//### MOD E ###
+
 				$this->itemsExtended[$productCartKey] = array(
 					'objProduct' => $objProduct,
 					'price' => !$objProduct->_variantIsSelected ? $objProduct->_priceAfterTax : $objProduct->_selectedVariant->_priceAfterTax,
@@ -632,6 +640,19 @@ class ls_shop_cartX {
         }
         return $arrItems;
 	}
+
+	protected function getMinOrderValue($product) {
+        $pav = unserialize(get_object_vars($product)['ls_data']['de']['lsShopProductAttributesValues']);
+        for($i = 0; $i < sizeof($pav); $i++) {
+            $propval = $pav[$i];
+            $property = $this->getPropertyByID($propval[0]);
+            $value = $this->getValueByID($propval[1]);
+            if($property == 'minimumOrderAmount') {
+                return $value;
+            }
+        }
+        return 0;
+    }
 	//### MOD E ###
 
 }
