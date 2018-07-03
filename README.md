@@ -7,10 +7,10 @@ reduce the validity of a coupon to certain products, that can be specified in th
 
 This extension also adds the possibilty to define a minimum order quantity for a specific product.
 
-#### Required
+## Required
 
 This bundle requires Contao and Merconis
 
-### TODO
+## TODO
 
 Improve look of cart, when a coupon was applied
