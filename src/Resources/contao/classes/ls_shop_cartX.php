@@ -676,7 +676,7 @@ class ls_shop_cartX {
                 return $value;
             }
 		}
-		echo 'noval found';die();
+		echo 'noval found!!!';die();
         return 0;
     }
 	//### MOD E ###
