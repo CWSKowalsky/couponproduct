@@ -660,15 +660,18 @@ class ls_shop_cartX {
     }
 
 	protected function getMinOrderValue($product) {
+		print_r($product).'<br>';
         $pav = unserialize(get_object_vars($product)['ls_data']['de']['lsShopProductAttributesValues']);
         for($i = 0; $i < sizeof($pav); $i++) {
             $propval = $pav[$i];
             $property = $this->getPropertyByID($propval[0]);
             $value = $this->getValueByID($propval[1]);
             if($property == 'minimumOrderAmount') {
+				echo 'value '.$value;die();
                 return $value;
             }
-        }
+		}
+		echo 'noval found';die();
         return 0;
     }
 	//### MOD E ###
