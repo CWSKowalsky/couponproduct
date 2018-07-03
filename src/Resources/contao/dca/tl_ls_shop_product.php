@@ -12,7 +12,8 @@
 		'exclude' => true,
 		'inputType'		=>	'text',
 		'eval'			=>	array('rgxp' => 'number', 'tl_class' => 'w50', 'mandatory' => true),
-		'sorting' => true
+        'sorting' => true,
+        'sql' => 'text NULL'
     );
 
 ?>
